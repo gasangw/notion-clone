@@ -1,11 +1,14 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import ChooseOption from './components/mainPage';
 // import Blocks from './components/blocks';
 
 function App() {
   return (
     <div className="App">
-      <ChooseOption />
+      <Routes>
+        <Route path="/" element={<ChooseOption />} />
+      </Routes>
     </div>
   );
 }
