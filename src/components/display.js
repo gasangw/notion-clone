@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { BsList } from 'react-icons/bs';
+import { BsList } from 'react-icons/bs';
 // import ChooseOption from './mainPage';
 
 const Display = () => {
@@ -33,7 +33,8 @@ const Display = () => {
         <div className="text-wrap">
           {taskList.map((w) => (
             <div key={w.id}>
-              <h1>{w}</h1>
+               {w}
+               <BsList />
             </div>
           ))}
         </div>
