@@ -1,0 +1,38 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  height: 23rem;
+  border: 1px solid rgb(228, 224, 224);
+  border-radius: 5px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin-bottom: -1rem;
+  align-items: flex-start;
+}
+
+.h4 {
+  font-weight: 600;
+  line-height: 50%;
+}
+
+.eachOption {
+  width: 100%;
+  height: 20%;
+  border-style: none;
+}
+
+.title,
+.text-muted {
+  text-align: start;
+  cursor: pointer;
+}
+
+.text--selected {
+  background-color: #eee;
+}
