@@ -1,7 +1,3 @@
-.option-card {
-  margin-right: auto;
-}
-
 .card-container {
   display: flex;
   flex-direction: column;
