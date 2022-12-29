@@ -1,8 +1,12 @@
+.option-card {
+  margin-right: auto;
+}
+
 .card-container {
   display: flex;
   flex-direction: column;
   width: 20rem;
-  height: 23rem;
+  max-height: 50%;
   border: 1px solid rgb(228, 224, 224);
   border-radius: 5px;
   box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
@@ -12,7 +16,7 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  margin-bottom: -1rem;
+  margin-bottom: -0.5rem;
   align-items: flex-start;
 }
 
@@ -33,6 +37,10 @@
   cursor: pointer;
 }
 
-.text--selected {
-  background-color: #eee;
+.row {
+  margin: -1rem 0.5rem;
 }
+
+/* .text--selected {
+  background-color: #eee;
+} */
