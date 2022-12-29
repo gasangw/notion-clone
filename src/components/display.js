@@ -1,50 +1,42 @@
 import React, { useState } from 'react';
-import { BsList } from 'react-icons/bs';
+// import { BsList } from 'react-icons/bs';
 // import ChooseOption from './mainPage';
 
 const Display = () => {
-  const [list, setList] = useState([]);
-  const [input, setInput] = useState('');
+  const [taskList, setTaskList] = useState([]);
+  const [newTask, setNewTask] = useState('');
 
-  // create new heading
-  const addHeading = (heading) => {
-    const newHeading = {
-      id: Math.random(),
-      heading,
-    };
+  const addTask = () => {
+    setTaskList([...taskList, newTask]);
+  };
 
-    // add heading to the list
-    setList([...list, newHeading]);
-
-    // clear input
-    setInput('');
+  const handleChange = (e) => {
+    setNewTask(e.target.value);
   };
 
   const handler = (e) => {
     if (e.key === 'Enter') {
-      addHeading();
+      addTask();
+      e.target.value = '';
     }
   };
   return (
     <div className="wrapper">
-      <ul className="text-wrap">
-        {list.map((heading) => (
-          <li key={heading.id}>
-            <h1>{heading.heading}</h1>
-            <BsList />
-          </li>
-        ))}
-
-      </ul>
       <div>
         <input
           type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={handleChange}
           onKeyPress={(e) => handler(e)}
           className="type-field"
           placeholder="Heading 1"
         />
+        <div className="text-wrap">
+          {taskList.map((w) => (
+            <div key={w.id}>
+              <h1>{w}</h1>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
