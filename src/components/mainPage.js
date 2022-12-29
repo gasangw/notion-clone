@@ -26,7 +26,7 @@ const ChooseOption = () => {
               <Badge bg="primary">{query}</Badge>
             </p>
           </div>
-          <div className="eachOption text--selected">
+          <div className="eachOption">
             {Options.filter((p) => p.title.toLowerCase().includes(query)).map((p) => (
               <dl className="row" key={p.id}>
                 <dt className="col-sm-2 fs-1 text-muted">
