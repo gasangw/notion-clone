@@ -60,17 +60,7 @@
   outline-style: none;
 }
 
-/* .wrapper {
-  margin: 6rem 3rem;
-  font-size: 1.2rem;
-} */
-
-.type-field {
-  width: 80%;
-  padding: 0.7rem 0;
-}
-
 ::placeholder {
-  font-weight: 600;
+  font-weight: 400;
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
