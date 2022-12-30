@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <Main />
+      {/* <ChooseOption /> */}
       {/* <Routes>
         <Route path="/" element={<ChooseOption />} />
       </Routes> */}

@@ -42,12 +42,11 @@
   color: rgb(160, 162, 163);
 }
 
-/* .text-wrap {
+.text-wrap {
   flex-direction: row;
   justify-items: baseline;
-} */
+}
 
-/* .text--selected:hover {
-  cursor: pointer;
-  background-color: #eee;
-} */
+.content {
+  margin: 2rem 0 0 4rem;
+}
