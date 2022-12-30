@@ -38,15 +38,29 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .container,
+.wrapper,
 .input--section {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  margin: 6rem 2rem;
+  margin: 3rem 2rem;
   width: 80%;
 }
 
-.input--section {
+.input--section,
+.type-field {
   border-style: none;
   outline-style: none;
+}
+
+::placeholder {
+  font-weight: 400;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

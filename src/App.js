@@ -1,11 +1,10 @@
 import './App.css';
-// import ChooseOption from './components/mainPage';
-// import Blocks from './components/blocks';
+import Main from './components/Main';
 
 function App() {
   return (
     <div className="App">
-      <p>Hello react app</p>
+      <Main />
     </div>
   );
 }
