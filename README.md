@@ -16,8 +16,8 @@
 
 ## Getting Started
 
-[ ] run `npx create-react-app *name of app*`
-[ ] run `npm start`
+- Run `npx create-react-app name-of-app`
+- Run `npm start`
 
 
 To get a local copy up and running follow these simple example steps.
