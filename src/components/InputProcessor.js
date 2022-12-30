@@ -2,18 +2,20 @@ import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Badge } from 'react-bootstrap';
 import { RxText } from 'react-icons/rx';
-import { headingFormats, initialPlaceholder } from '../static/formats';
+import { headingFormats, normalFormat } from '../static/formats';
 import './style.css';
 
 const InputProcessor = ({ addBlock }) => {
   const fieldRef = useRef();
   const [data, setData] = useState('');
-  const [placeholder, setPlaceholder] = useState(initialPlaceholder);
+  const [placeholder, setPlaceholder] = useState(normalFormat.title);
   const [headingsVisibility, setHeadingsVisibility] = useState(null);
   const [filteredFormats, setFormats] = useState([]);
+  const [isHeading, setIsHeading] = useState(false);
+  const [currentStyle, setStyle] = useState(normalFormat.getStyle());
 
-  const applyFormat = (size, placeholder = initialPlaceholder) => {
-    fieldRef.current.style.fontSize = `${size}px`;
+  const applyFormat = (placeholder = normalFormat.title) => {
+    fieldRef.current.style = currentStyle;
     setPlaceholder(placeholder);
     setData('');
   };
@@ -23,7 +25,9 @@ const InputProcessor = ({ addBlock }) => {
 
     if (!value.startsWith('/')) return;
     if (/^\/\+\d$/.test(value)) {
-      applyFormat(14 * parseInt(value[2], 10));
+      setIsHeading(false);
+      setStyle(normalFormat.getStyle(parseInt(value[2], 10)));
+      applyFormat();
     } else if (/^\/\d$/.test(value)) {
       const formats = headingFormats.filter((e) => e.title.includes(value[1]));
       setFormats(formats);
@@ -31,10 +35,12 @@ const InputProcessor = ({ addBlock }) => {
     }
   };
 
-  const applyHeadingFormat = (title, size) => {
+  const applyHeadingFormat = (title, style) => {
     setHeadingsVisibility(false);
+    setIsHeading(true);
     setFormats([]);
-    applyFormat(size, title);
+    setStyle(style);
+    applyFormat(title);
   };
 
   const handleChange = ({ target }) => {
@@ -43,9 +49,24 @@ const InputProcessor = ({ addBlock }) => {
     propertyProcessing(value);
   };
 
+  // const changeText = (data) => {
+  //    data.style.fontSize = '1.5rem',
+  //    data.stylefontWeight = '600'
+  // };
+
+  // const normalText = (data) => {
+  //   fontSize = '0.8rem',
+  //   fontWeight = '200'
+  // }
+
+  // const displayMenuBar = (data) => {
+  //   display ='none'
+  // }
+
   const handler = (e) => {
     if (e.key === 'Enter' && data) {
-      addBlock(data);
+      addBlock({ isHeading, data, style: currentStyle });
+      setData('');
     }
   };
 
@@ -73,7 +94,7 @@ const InputProcessor = ({ addBlock }) => {
         onKeyDown={(e) => handler(e)}
         className="input--section"
         placeholder={placeholder}
-        style={{ fontSize: '14px' }}
+        style={currentStyle}
       />
       <div style={{ display: headingsVisibility ? 'block' : 'none' }}>
         <div className="card-container">
@@ -89,8 +110,17 @@ const InputProcessor = ({ addBlock }) => {
           </div>
           <div className="eachOption">
             {
-                filteredFormats.map(({ title, Shortcut, size }) => (
-                  <span className="row mt-1" onMouseOver={changeBackground} onFocus={handleUsernameFocus} role="button" key={title} onKeyDown={handleKeyDown} onClick={() => applyHeadingFormat(title, size)} tabIndex="0">
+                filteredFormats.map(({ title, Shortcut, style }) => (
+                  <span
+                    className="row mt-1"
+                    onMouseOver={changeBackground}
+                    onFocus={handleUsernameFocus}
+                    role="button"
+                    key={title}
+                    onKeyDown={handleKeyDown}
+                    onClick={() => applyHeadingFormat(title, style)}
+                    tabIndex="0"
+                  >
                     <dt className="col-sm-2 fs-1 text-muted">
                       <RxText />
                     </dt>

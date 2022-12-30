@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BsList } from 'react-icons/bs';
+import getUID from '../helpers/unique-id';
 import InputProcessor from './InputProcessor';
 
 const Main = () => {
@@ -12,10 +13,10 @@ const Main = () => {
   return (
     <>
       <div className="text-wrap">
-        {blocksList.map((block) => (
-          <div key={block} className="d-flex content">
-            <span className="bars"><BsList /></span>
-            {block}
+        {blocksList.map(({ isHeading, style, data }) => (
+          <div key={getUID()} className="d-flex align-items-center content" style={style}>
+            {isHeading && <span className="bars"><BsList /></span>}
+            {data}
           </div>
         ))}
       </div>
